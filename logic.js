@@ -1,22 +1,36 @@
-function exportCSV() {
-  let table = document.getElementById("timetable");
-  let rows = [];
-  for (let i = 0; i < table.rows.length; i++) {
-    let cells = table.rows[i].cells;
-    let row = [];
-    for (let j = 0; j < cells.length; j++) {
-      row.push(cells[j].innerText);
-    }
-    rows.push(row.join(","));
+
+document.getElementById("signupForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let password = document.getElementById("password").value;
+  let confirmPassword = document.getElementById("confirmPassword").value;
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match!");
+    return;
   }
-  let csvContent = rows.join("\n");
-  let blob = new Blob([csvContent], { type: "text/csv" });
-  let url = window.URL.createObjectURL(blob);
-  let a = document.createElement("a");
-  a.setAttribute("href", url);
-  a.setAttribute("download", "timetable.csv");
-  a.click();
-}
-function generateTimetable() {
-  alert("AI timetable generated (demo).");
-}
+
+  let role = document.getElementById("role").value;
+  if (!role) {
+    alert("Please select a role (Student, Teacher, or School).");
+    return;
+  }
+
+  // For now, just show success (later this can connect to backend/DB)
+  alert("Sign up successful as " + role + "!");
+  window.location.href = "login.html"; // redirect to login page
+});
+
+// Show/Hide password
+document.getElementById("showPassword").addEventListener("change", function() {
+  let password = document.getElementById("password");
+  let confirmPassword = document.getElementById("confirmPassword");
+  if (this.checked) {
+    password.type = "text";
+    confirmPassword.type = "text";
+  } else {
+    password.type = "password";
+    confirmPassword.type = "password";
+  }
+});
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Role | AI Timetable</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Select Your Role</h2>
+    <div class="role-selection">
+      <button onclick="showForm('student')">Student</button>
+      <button onclick="showForm('teacher')">Teacher</button>
+      <button onclick="showForm('school')">School</button>
+    </div>
+    <!-- Student Form -->
+    <form id="studentForm" class="hidden">
+      <h3>Student Details</h3>
+      <input type="text" placeholder="Roll Number" required>
+      <input type="text" placeholder="Class" required>
+      <input type="text" placeholder="Section" required>
+      <label>Choose Subjects:</label>
+      <input type="checkbox" name="subject" value="Mathematics"> Mathematics<br>
+      <input type="checkbox" name="subject" value="Physics"> Physics<br>
+      <input type="checkbox" name="subject" value="Chemistry"> Chemistry<br>
+      <input type="checkbox" name="subject" value="Biology"> Biology<br>
+      <input type="checkbox" name="subject" value="Computer Science"> Computer Science<br>
+      <input type="checkbox" name="subject" value="Economics"> Economics<br>
+      <input type="checkbox" name="subject" value="English"> English<br>
+      <input type="checkbox" name="subject" value="Hindi"> Hindi<br>
+      <input type="checkbox" name="subject" value="Political science"> Political Science<br>
+      <button type="submit" class="login-btn">Submit</button>
+    </form>
+    <!-- Teacher Form -->
+    <form id="teacherForm" class="hidden">
+      <h3>Teacher Details</h3>
+      <input type="text" placeholder="Staff ID" required>
+      <input type="text" placeholder="Department" required>
+      <input type="text" placeholder="Subjects" required>
+      <button type="submit" class="login-btn">Submit</button>
+    </form>
+    <!-- School Form -->
+    <form id="schoolForm" class="hidden">
+      <h3>School Details</h3>
+      <input type="text" placeholder="School Code" required>
+      <input type="text" placeholder="School Name" required>
+      <input type="text" placeholder="Location" required>
+      <button type="submit" class="login-btn">Submit</button>
+    </form>
+  </div>
+  <script>
+    function showForm(role) {
+      document.getElementById("studentForm").classList.add("hidden");
+      document.getElementById("teacherForm").classList.add("hidden");
+      document.getElementById("schoolForm").classList.add("hidden");
+
+      if(role === "student") document.getElementById("studentForm").classList.remove("hidden");
+      if(role === "teacher") document.getElementById("teacherForm").classList.remove("hidden");
+      if(role === "school") document.getElementById("schoolForm").classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
